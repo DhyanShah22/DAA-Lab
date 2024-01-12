@@ -20,9 +20,19 @@ void selection(int arr[], int n)
 
 void main() 
 {
-    int arr[] = {1,35,78,23,42,12,56};
-
-    int n = sizeof(arr)/sizeof(arr[0]);
+  int n;
+  printf("Enter the size of the array: \n");
+  scanf("%d", &n);
+  int arr[n];
+  printf("Enter 5 numbers\n");
+  for(int i = 0 ; i<n; i++)
+  {
+    scanf("%d", &arr[i]);
+  }  
+  printf("The array before sorting is \n:");
+  for(int i = 0; i < n; i++) {  
+    printf("%d ", arr[i]);  
+  } 
     selection(arr, n);
 
     printf("The sorted array after selection sort is: \n");

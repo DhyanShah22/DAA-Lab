@@ -20,14 +20,25 @@ void insert_Sort(int a[], int n)
   
 int main()  
 {  
-    int a[] = { 6,23,73,34,76,28,97 };  
-    int n = sizeof(a) / sizeof(a[0]);  
-    insert_Sort(a, n);  
+  int n;
+  printf("Enter the size of the array: \n");
+  scanf("%d", &n);
+  int arr[n];
+  printf("Enter 5 numbers\n");
+  for(int i = 0 ; i<n; i++)
+  {
+    scanf("%d", &arr[i]);
+  }  
+  printf("The array before sorting is \n:");
+  for(int i = 0; i < n; i++) {  
+    printf("%d ", arr[i]);  
+  } 
+    insert_Sort(arr, n);  
     printf("\nAfter sorting array elements are - \n");
     int i;
     for(i=0;i<n;i++)
     {
-        printf("%d ", a[i]);
+        printf("%d ", arr[i]);
     }
   
     return 0;  

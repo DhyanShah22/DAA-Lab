@@ -21,8 +21,20 @@ int bubble(int arr[], int n)
 void main() {  
   printf("Dhyan Shah\n");
   printf("22BCP269\n");
-  int arr[] = {64, 34, 25, 12, 22, 11, 90};  
-  int n = sizeof(arr)/sizeof(arr[0]);  
+  int n;
+  printf("Enter the size of the array: \n");
+  scanf("%d", &n);
+  int arr[n];
+  printf("Enter 5 numbers\n");
+  for(int i = 0 ; i<n; i++)
+  {
+    scanf("%d", &arr[i]);
+  }  
+  printf("The array before sorting is \n:");
+  for(int i = 0; i < n; i++) {  
+    printf("%d ", arr[i]);  
+  } 
+  //int n = sizeof(arr)/sizeof(arr[0]);  
   bubble(arr, n);  
   printf("The Sorted array after bubble sort is: \n");  
   for (int i = 0; i < n; i++) {  
