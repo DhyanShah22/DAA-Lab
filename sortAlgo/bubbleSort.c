@@ -19,11 +19,14 @@ int bubble(int arr[], int n)
 }
 
 void main() {  
+  printf("Dhyan Shah\n");
+  printf("22BCP269\n");
   int arr[] = {64, 34, 25, 12, 22, 11, 90};  
   int n = sizeof(arr)/sizeof(arr[0]);  
   bubble(arr, n);  
-  printf("The Sorted array after bubble sort is: ");  
+  printf("The Sorted array after bubble sort is: \n");  
   for (int i = 0; i < n; i++) {  
     printf("%d ", arr[i]);  
   }   
+  printf("\n");
 }  
