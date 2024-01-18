@@ -20,6 +20,8 @@ void selection(int arr[], int n)
 
 void main() 
 {
+  printf("Dhyan Shah\n");
+  printf("22BCP269\n");
   int n;
   printf("Enter the size of the array: \n");
   scanf("%d", &n);

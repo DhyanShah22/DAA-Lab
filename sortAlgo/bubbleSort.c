@@ -34,7 +34,6 @@ void main() {
   for(int i = 0; i < n; i++) {  
     printf("%d ", arr[i]);  
   } 
-  //int n = sizeof(arr)/sizeof(arr[0]);  
   bubble(arr, n);  
   printf("The Sorted array after bubble sort is: \n");  
   for (int i = 0; i < n; i++) {  
