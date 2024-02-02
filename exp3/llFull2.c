@@ -151,8 +151,8 @@ Node* power(Node* base, unsigned int exponent) {
 }
 
 int main() {
-    printf("Name: Khushi Shah\n");
-    printf("Roll No: 22BCP258\n");
+    printf("Name: Dhyan Shah\n");
+    printf("Roll No: 22BCP269\n");
 
     Node* num1 = NULL;
     Node* num2 = NULL;
