@@ -98,7 +98,7 @@ void printRecordsWithinDistance(struct CityDatabase *db, int x, int y, double di
 }
 
 int main() {
-    printf("Anusi Patel \n22BCP250 \n");
+    printf("Dhyan Shah \n22BCP269 \n");
     struct CityDatabase database;
     database.count = 0;
 

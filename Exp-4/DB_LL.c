@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
+#include <limits.h>
 
 struct City {
     char name[100];
@@ -25,7 +26,7 @@ void printRecordsWithinDistance(struct CityDatabase *db, int x, int y, double di
 void freeDatabase(struct CityDatabase *db);
 
 int main() {
-    printf("Anusi Patel \n22BCP250 \n");
+    printf("Dhyan Shah \n22BCP269 \n");
     struct CityDatabase database;
     initializeDatabase(&database);
 
@@ -144,7 +145,7 @@ struct City* searchRecordByName(struct CityDatabase *db, char name[]) {
 // Function to search a record by coordinate using distance formula
 struct City* searchRecordByCoordinate(struct CityDatabase *db, int x, int y) {
     struct City* current = db->head;
-    double minDistance = __INT_MAX__;
+    double minDistance = INT_MAX; // Updated to use INT_MAX instead of __INT_MAX__
     struct City* nearestCity = NULL;
 
     while (current != NULL) {
