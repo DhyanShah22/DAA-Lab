@@ -14,7 +14,6 @@ void matrix_multiply(int **A, int **B, int **C, int n) {
         int **B11, **B12, **B21, **B22;
         int **C11, **C12, **C21, **C22;
 
-        // Allocate memory for submatrices
         A11 = (int **)malloc(n/2 * sizeof(int *));
         A12 = (int **)malloc(n/2 * sizeof(int *));
         A21 = (int **)malloc(n/2 * sizeof(int *));
