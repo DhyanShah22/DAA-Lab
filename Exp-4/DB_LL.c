@@ -15,7 +15,6 @@ struct CityDatabase {
     struct City* head;
 };
 
-// Function prototypes
 void initializeDatabase(struct CityDatabase *db);
 void insertRecord(struct CityDatabase *db, char name[], int x, int y);
 void deleteRecordByName(struct CityDatabase *db, char name[]);
@@ -30,11 +29,9 @@ int main() {
     struct CityDatabase database;
     initializeDatabase(&database);
 
-    // Inserting records
     insertRecord(&database, "New York", 10, 20);
     insertRecord(&database, "Los Angeles", 30, 40);
 
-    // Searching a record by name
     struct City* cityByName = searchRecordByName(&database, "New York");
     if (cityByName != NULL) {
         printf("City found by name: %s, Coordinates: (%d, %d)\n", cityByName->name, cityByName->x, cityByName->y);
@@ -42,7 +39,6 @@ int main() {
         printf("City not found by name.\n");
     }
 
-    // Searching a record by coordinate
     struct City* cityByCoord = searchRecordByCoordinate(&database, 30, 40);
     if (cityByCoord != NULL) {
         printf("City found by coordinate: %s, Coordinates: (%d, %d)\n", cityByCoord->name, cityByCoord->x, cityByCoord->y);
@@ -50,10 +46,8 @@ int main() {
         printf("City not found by coordinate.\n");
     }
 
-    // Deleting a record by name
     deleteRecordByName(&database, "New York");
 
-    // Deleting a record by coordinate
     deleteRecordByCoordinate(&database, 30, 40);
     insertRecord(&database, "New York", 10, 20);
     insertRecord(&database, "Los Angeles", 30, 40);
@@ -61,22 +55,18 @@ int main() {
     insertRecord(&database, "Houston", 70, 10);
     insertRecord(&database, "Phoenix", 30, 20);
 
-    // Printing records within a given distance of a specified point
     printf("\nRecords within distance of (10, 10):\n");
     printRecordsWithinDistance(&database, 10, 10, 30);
 
-    // Free memory
     freeDatabase(&database);
 
     return 0;
 }
 
-// Function to initialize the database
 void initializeDatabase(struct CityDatabase *db) {
     db->head = NULL;
 }
 
-// Function to insert a record
 void insertRecord(struct CityDatabase *db, char name[], int x, int y) {
     struct City* newCity = (struct City*)malloc(sizeof(struct City));
     if (newCity == NULL) {
@@ -90,7 +80,6 @@ void insertRecord(struct CityDatabase *db, char name[], int x, int y) {
     db->head = newCity;
 }
 
-// Function to delete a record by name
 void deleteRecordByName(struct CityDatabase *db, char name[]) {
     struct City* current = db->head;
     struct City* prev = NULL;
@@ -110,7 +99,6 @@ void deleteRecordByName(struct CityDatabase *db, char name[]) {
     }
 }
 
-// Function to delete a record by coordinate
 void deleteRecordByCoordinate(struct CityDatabase *db, int x, int y) {
     struct City* current = db->head;
     struct City* prev = NULL;
@@ -130,7 +118,6 @@ void deleteRecordByCoordinate(struct CityDatabase *db, int x, int y) {
     }
 }
 
-// Function to search a record by name
 struct City* searchRecordByName(struct CityDatabase *db, char name[]) {
     struct City* current = db->head;
     while (current != NULL) {
@@ -142,10 +129,9 @@ struct City* searchRecordByName(struct CityDatabase *db, char name[]) {
     return NULL;
 }
 
-// Function to search a record by coordinate using distance formula
 struct City* searchRecordByCoordinate(struct CityDatabase *db, int x, int y) {
     struct City* current = db->head;
-    double minDistance = INT_MAX; // Updated to use INT_MAX instead of __INT_MAX__
+    double minDistance = INT_MAX; 
     struct City* nearestCity = NULL;
 
     while (current != NULL) {
@@ -159,7 +145,6 @@ struct City* searchRecordByCoordinate(struct CityDatabase *db, int x, int y) {
     return nearestCity;
 }
 
-// Function to print all records within a given distance of a specified point
 void printRecordsWithinDistance(struct CityDatabase *db, int x, int y, double distance) {
     struct City* current = db->head;
     while (current != NULL) {
@@ -171,7 +156,6 @@ void printRecordsWithinDistance(struct CityDatabase *db, int x, int y, double di
     }
 }
 
-// Function to free memory allocated for the database
 void freeDatabase(struct CityDatabase *db) {
     struct City* current = db->head;
     struct City* next;
