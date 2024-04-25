@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h>
 
 struct Edge {
     char src, dest;
@@ -22,14 +21,6 @@ struct MinHeap {
     int capacity;
     struct MinHeapNode* array;
 };
-
-struct MinHeapNode* newMinHeapNode(char src, char dest, int weight) {
-    struct MinHeapNode* node = (struct MinHeapNode*)malloc(sizeof(struct MinHeapNode));
-    node->src = src;
-    node->dest = dest;
-    node->weight = weight;
-    return node;
-}
 
 struct MinHeap* createMinHeap(int capacity) {
     struct MinHeap* minHeap = (struct MinHeap*)malloc(sizeof(struct MinHeap));
@@ -81,25 +72,13 @@ struct MinHeapNode* extractMin(struct MinHeap* minHeap) {
 
 void insertMinHeap(struct MinHeap* minHeap, char src, char dest, int weight) {
     minHeap->size++;
-    minHeap->array[minHeap->size - 1] = *newMinHeapNode(src, dest, weight);
+    minHeap->array[minHeap->size - 1] = (struct MinHeapNode){src, dest, weight};
 
     int i = minHeap->size - 1;
     while (i != 0 && minHeap->array[(i - 1) / 2].weight > minHeap->array[i].weight) {
         swapMinHeapNode(&minHeap->array[i], &minHeap->array[(i - 1) / 2]);
         i = (i - 1) / 2;
     }
-}
-
-int find(int parent[], int i) {
-    if (parent[i] == -1)
-        return i;
-    return find(parent, parent[i]);
-}
-
-void Union(int parent[], int x, int y) {
-    int xset = find(parent, x);
-    int yset = find(parent, y);
-    parent[xset] = yset;
 }
 
 void kruskalMST(struct Graph* graph) {
@@ -127,12 +106,19 @@ void kruskalMST(struct Graph* graph) {
     while (e < V - 1 && !isEmpty(minHeap)) {
         struct MinHeapNode* nextEdge = extractMin(minHeap);
 
-        int x = find(parent, nextEdge->src - 'A');
-        int y = find(parent, nextEdge->dest - 'A');
+        int x = nextEdge->src - 'A';
+        int y = nextEdge->dest - 'A';
 
-        if (x != y) {
+        int xroot = x;
+        int yroot = y;
+        while (parent[xroot] != -1)
+            xroot = parent[xroot];
+        while (parent[yroot] != -1)
+            yroot = parent[yroot];
+
+        if (xroot != yroot) {
             result[e++] = (struct Edge){nextEdge->src, nextEdge->dest, nextEdge->weight};
-            Union(parent, x, y);
+            parent[xroot] = yroot;
         }
     }
 
@@ -143,7 +129,6 @@ void kruskalMST(struct Graph* graph) {
 }
 
 int main() {
-    printf("Dhyan Shah\n22BCP269\n");
     int V, E;
     printf("Enter number of vertices and edges: ");
     scanf("%d %d", &V, &E);
