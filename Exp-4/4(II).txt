@@ -14,7 +14,9 @@ Deletion by Coordinate: Similar to deletion by name, search time is O(n), follow
 Search by Name: Requires linear search, O(n), where n is the number of records.
 Search by Coordinate: Requires linear search, O(n), where n is the number of records.
 Printing Records Within Distance: Requires scanning through all records, O(n), where n is the number of records.
+
 Relative Advantages and Disadvantages:
+
 Array-based List:
 
 Advantages:
@@ -23,11 +25,13 @@ Cache-friendly due to contiguous memory allocation.
 Disadvantages:
 Resizing can be costly.
 Insertions and deletions may require shifting elements, making them inefficient for large datasets.
+
 Linked List:
 
 Advantages:
 Dynamic size without resizing overhead.
 Efficient insertions and deletions at any position.
+
 Disadvantages:
 Requires extra memory for pointers.
 Less cache-friendly due to scattered memory allocation.
