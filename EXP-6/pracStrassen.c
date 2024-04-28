@@ -81,7 +81,9 @@ void strassenMultiply(int **A, int **B, int **C, int n){
             B22[i][j] = B[i+newSize][j+newSize];
 
         }
-         addMatrix(A11, A22, temp1, newSize);
+    }
+
+    addMatrix(A11, A22, temp1, newSize);
     addMatrix(B11, B22, temp2, newSize);
     strassenMultiply(temp1, temp2, P1, newSize);
 
@@ -147,7 +149,6 @@ void strassenMultiply(int **A, int **B, int **C, int n){
     freeMatrix(P7, newSize);
     freeMatrix(temp1, newSize);
     freeMatrix(temp2, newSize);
-    }
 }
 
 void printMatrix(int **Matrix, int n){
