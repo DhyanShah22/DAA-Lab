@@ -6,7 +6,7 @@ int findPeakEntry(int A[], int n) {
 
     while (low < high) {
         int mid = low + (high - low) / 2;
-        if (A[mid] < A[mid + 1]) {
+        if (A[mid] < A[mid + 1] && A[mid] > A[mid-1]) {
             low = mid + 1;
         } else {
             high = mid;
