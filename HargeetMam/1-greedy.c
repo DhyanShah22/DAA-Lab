@@ -23,10 +23,10 @@ int maxPro(Job jobs[], int n,int *maxprofit) {
     for(int i=1;i<n;i++){
         dp[i] = 1;
         profit[i] = jobs[i].profit;
-        for(int j=0; j<i; j++){
+        for(int j=0; j<=i; j++){
             if(jobs[i].start >= jobs[j].end){
                 if(dp[i] < dp[j] +1){
-                    dp[i] = dp[j] +i;
+                    dp[i] = dp[j] + 1;
                     profit[i] = profit[j] + jobs[i].profit;
                 }
             }
@@ -64,7 +64,7 @@ int main(){
     int maxProfit;
     int max_profit = maxPro(j, n, &maxProfit);
 
-    printf("Maximum number of events that can be scheduled: %d\n", max_profit-1);
+    printf("Maximum number of events that can be scheduled: %d\n", max_profit);
     printf("Maximum profit when all events are scheduled: %d\n", maxProfit);
 
     free(j);
